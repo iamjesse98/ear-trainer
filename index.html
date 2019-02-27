@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ear Trainer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="Tone.js"></script>
+</head>
+<body>
+    <header>
+        EAR TRAINER
+    </header>
+    <main>
+        <div class="cont">
+            <input type="text" value="C4" id="note"><br />
+            <input type="text" value="2.5" id="dur"><br />
+            <input type="text" value="0.3" id="delay"><br/>
+            <button id="play">Play</button>
+        </div>
+    </main>
+    <footer>
+        <p>With 💖 from &lt;Jesse /&gt;</p>
+    </footer>
+
+<script>
+const synth = new Tone.FMSynth().toMaster()
+
+const [$note, $dur, $delay, $play] = [
+    document.querySelector('#note'),
+    document.querySelector('#dur'),
+    document.querySelector('#delay'),
+    document.querySelector('#play')
+]
+
+const playNote = (n, du, de) => synth.triggerAttackRelease(n, du, de)
+
+$play.addEventListener('click', _ => playNote($note.value, $dur.value, $delay.value))
+</script>
+
+</body>
+</html>
